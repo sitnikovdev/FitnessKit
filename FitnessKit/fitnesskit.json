@@ -1,0 +1,296 @@
+[
+    {
+        "name": "Stretch",
+        "description": "Cистема упражнений, направленная на растяжку, развитие гибкости и улучшение осанки. ПРОДОЛЖИТЕЛЬНОСТЬ УРОКА 45 мин.",
+        "place": "Студия 1",
+        "teacher": "Титова Елена Ивановна",
+        "startTime": "12.15",
+        "endTime": "13.00",
+        "weekDay": 4,
+        "appointment_id": "df128431-2127-42b9-a2af-b879e729f51a",
+        "service_id": "e154f5fb-7ecd-11e8-8150-9c5c8e747603",
+        "pay": false,
+        "appointment": false,
+        "teacher_v2": {
+            "short_name": "Елена",
+            "name": "Титова Елена Ивановна",
+            "position": "Мастер-тренер групповых программ",
+            "imageUrl": "http://95.165.159.104:90/fitnes_t/hs/nfc_mobile/files/e639a68b-b34a-11e8-8155-9c5c8e747603.jpg"
+        },
+        "color": "#FFC0CB",
+        "availability": 5
+    },
+    {
+        "name": "Yoga ",
+        "description": "Урок, направленный на достижение полной гармонии между физической, умственной и моральной сторонами жизни. Регулярные занятия способствуют укреплению мышц, улучшению осанки, увеличению подвижности суставов.",
+        "place": "Студия 7",
+        "teacher": "Титова Елена Ивановна",
+        "startTime": "17.00",
+        "endTime": "18.30",
+        "weekDay": 4,
+        "appointment_id": "b014cee9-f0ca-4871-914c-143f3e448909",
+        "service_id": "3474cd5c-6f7c-11e8-814e-9c5c8e747603",
+        "pay": false,
+        "appointment": false,
+        "teacher_v2": {
+            "short_name": "Елена",
+            "name": "Титова Елена Ивановна",
+            "position": "Мастер-тренер групповых программ",
+            "imageUrl": "http://95.165.159.104:90/fitnes_t/hs/nfc_mobile/files/e639a68b-b34a-11e8-8155-9c5c8e747603.jpg"
+        },
+        "color": "#FFC0CB",
+        "availability": -1
+    },
+    {
+        "name": "Stretch",
+        "description": "Cистема упражнений, направленная на растяжку, развитие гибкости и улучшение осанки. ПРОДОЛЖИТЕЛЬНОСТЬ УРОКА 45 мин.",
+        "place": "Студия 1",
+        "teacher": "Титова Елена Ивановна",
+        "startTime": "12.15",
+        "endTime": "13.00",
+        "weekDay": 5,
+        "appointment_id": "549d8e5d-a40c-4f01-828d-27be8b8eaeaf",
+        "service_id": "e154f5fb-7ecd-11e8-8150-9c5c8e747603",
+        "pay": false,
+        "appointment": false,
+        "teacher_v2": {
+            "short_name": "Елена",
+            "name": "Титова Елена Ивановна",
+            "position": "Мастер-тренер групповых программ",
+            "imageUrl": "http://95.165.159.104:90/fitnes_t/hs/nfc_mobile/files/e639a68b-b34a-11e8-8155-9c5c8e747603.jpg"
+        },
+        "color": "#FFC0CB",
+        "availability": 5
+    },
+    {
+        "name": "Yoga ",
+        "description": "Урок, направленный на достижение полной гармонии между физической, умственной и моральной сторонами жизни. Регулярные занятия способствуют укреплению мышц, улучшению осанки, увеличению подвижности суставов.",
+        "place": "Студия 7",
+        "teacher": "Титова Елена Ивановна",
+        "startTime": "17.00",
+        "endTime": "18.30",
+        "weekDay": 5,
+        "appointment_id": "84bd36c5-1840-4aab-b5dd-cb3377aba07c",
+        "service_id": "3474cd5c-6f7c-11e8-814e-9c5c8e747603",
+        "pay": false,
+        "appointment": false,
+        "teacher_v2": {
+            "short_name": "Елена",
+            "name": "Титова Елена Ивановна",
+            "position": "Мастер-тренер групповых программ",
+            "imageUrl": "http://95.165.159.104:90/fitnes_t/hs/nfc_mobile/files/e639a68b-b34a-11e8-8155-9c5c8e747603.jpg"
+        },
+        "color": "#FFC0CB",
+        "availability": -1
+    },
+    {
+        "name": "Stretch",
+        "description": "Cистема упражнений, направленная на растяжку, развитие гибкости и улучшение осанки. ПРОДОЛЖИТЕЛЬНОСТЬ УРОКА 45 мин.",
+        "place": "Студия 1",
+        "teacher": "Титова Елена Ивановна",
+        "startTime": "12.15",
+        "endTime": "13.00",
+        "weekDay": 6,
+        "appointment_id": "bc2c46fc-e2ec-4ec7-b299-edfe26dade2e",
+        "service_id": "e154f5fb-7ecd-11e8-8150-9c5c8e747603",
+        "pay": false,
+        "appointment": false,
+        "teacher_v2": {
+            "short_name": "Елена",
+            "name": "Титова Елена Ивановна",
+            "position": "Мастер-тренер групповых программ",
+            "imageUrl": "http://95.165.159.104:90/fitnes_t/hs/nfc_mobile/files/e639a68b-b34a-11e8-8155-9c5c8e747603.jpg"
+        },
+        "color": "#FFC0CB",
+        "availability": 5
+    },
+    {
+        "name": "Yoga ",
+        "description": "Урок, направленный на достижение полной гармонии между физической, умственной и моральной сторонами жизни. Регулярные занятия способствуют укреплению мышц, улучшению осанки, увеличению подвижности суставов.",
+        "place": "Студия 7",
+        "teacher": "Титова Елена Ивановна",
+        "startTime": "17.00",
+        "endTime": "18.30",
+        "weekDay": 6,
+        "appointment_id": "16bb7aab-1394-4ecf-96a5-02a86e691154",
+        "service_id": "3474cd5c-6f7c-11e8-814e-9c5c8e747603",
+        "pay": false,
+        "appointment": false,
+        "teacher_v2": {
+            "short_name": "Елена",
+            "name": "Титова Елена Ивановна",
+            "position": "Мастер-тренер групповых программ",
+            "imageUrl": "http://95.165.159.104:90/fitnes_t/hs/nfc_mobile/files/e639a68b-b34a-11e8-8155-9c5c8e747603.jpg"
+        },
+        "color": "#FFC0CB",
+        "availability": -1
+    },
+    {
+        "name": "Stretch",
+        "description": "Cистема упражнений, направленная на растяжку, развитие гибкости и улучшение осанки. ПРОДОЛЖИТЕЛЬНОСТЬ УРОКА 45 мин.",
+        "place": "Студия 1",
+        "teacher": "Титова Елена Ивановна",
+        "startTime": "12.15",
+        "endTime": "13.00",
+        "weekDay": 7,
+        "appointment_id": "e99efa63-6a63-4716-8211-9ab214940935",
+        "service_id": "e154f5fb-7ecd-11e8-8150-9c5c8e747603",
+        "pay": false,
+        "appointment": false,
+        "teacher_v2": {
+            "short_name": "Елена",
+            "name": "Титова Елена Ивановна",
+            "position": "Мастер-тренер групповых программ",
+            "imageUrl": "http://95.165.159.104:90/fitnes_t/hs/nfc_mobile/files/e639a68b-b34a-11e8-8155-9c5c8e747603.jpg"
+        },
+        "color": "#FFC0CB",
+        "availability": 5
+    },
+    {
+        "name": "Yoga ",
+        "description": "Урок, направленный на достижение полной гармонии между физической, умственной и моральной сторонами жизни. Регулярные занятия способствуют укреплению мышц, улучшению осанки, увеличению подвижности суставов.",
+        "place": "Студия 7",
+        "teacher": "Титова Елена Ивановна",
+        "startTime": "17.00",
+        "endTime": "18.30",
+        "weekDay": 7,
+        "appointment_id": "3a4dd2d4-c05e-492c-8131-a17079e943f4",
+        "service_id": "3474cd5c-6f7c-11e8-814e-9c5c8e747603",
+        "pay": false,
+        "appointment": false,
+        "teacher_v2": {
+            "short_name": "Елена",
+            "name": "Титова Елена Ивановна",
+            "position": "Мастер-тренер групповых программ",
+            "imageUrl": "http://95.165.159.104:90/fitnes_t/hs/nfc_mobile/files/e639a68b-b34a-11e8-8155-9c5c8e747603.jpg"
+        },
+        "color": "#FFC0CB",
+        "availability": -1
+    },
+    {
+        "name": "Stretch",
+        "description": "Cистема упражнений, направленная на растяжку, развитие гибкости и улучшение осанки. ПРОДОЛЖИТЕЛЬНОСТЬ УРОКА 45 мин.",
+        "place": "Студия 1",
+        "teacher": "Титова Елена Ивановна",
+        "startTime": "12.15",
+        "endTime": "13.00",
+        "weekDay": 1,
+        "appointment_id": "c8a7c89e-6083-4340-a663-661e502d1094",
+        "service_id": "e154f5fb-7ecd-11e8-8150-9c5c8e747603",
+        "pay": false,
+        "appointment": false,
+        "teacher_v2": {
+            "short_name": "Елена",
+            "name": "Титова Елена Ивановна",
+            "position": "Мастер-тренер групповых программ",
+            "imageUrl": "http://95.165.159.104:90/fitnes_t/hs/nfc_mobile/files/e639a68b-b34a-11e8-8155-9c5c8e747603.jpg"
+        },
+        "color": "#FFC0CB",
+        "availability": 5
+    },
+    {
+        "name": "Yoga ",
+        "description": "Урок, направленный на достижение полной гармонии между физической, умственной и моральной сторонами жизни. Регулярные занятия способствуют укреплению мышц, улучшению осанки, увеличению подвижности суставов.",
+        "place": "Студия 7",
+        "teacher": "Титова Елена Ивановна",
+        "startTime": "17.00",
+        "endTime": "18.30",
+        "weekDay": 1,
+        "appointment_id": "ba036b25-90a8-41fd-9127-c8ba768d4dc3",
+        "service_id": "3474cd5c-6f7c-11e8-814e-9c5c8e747603",
+        "pay": false,
+        "appointment": false,
+        "teacher_v2": {
+            "short_name": "Елена",
+            "name": "Титова Елена Ивановна",
+            "position": "Мастер-тренер групповых программ",
+            "imageUrl": "http://95.165.159.104:90/fitnes_t/hs/nfc_mobile/files/e639a68b-b34a-11e8-8155-9c5c8e747603.jpg"
+        },
+        "color": "#FFC0CB",
+        "availability": -1
+    },
+    {
+        "name": "Stretch",
+        "description": "Cистема упражнений, направленная на растяжку, развитие гибкости и улучшение осанки. ПРОДОЛЖИТЕЛЬНОСТЬ УРОКА 45 мин.",
+        "place": "Студия 1",
+        "teacher": "Титова Елена Ивановна",
+        "startTime": "12.15",
+        "endTime": "13.00",
+        "weekDay": 2,
+        "appointment_id": "173e2b8c-a408-4042-9cef-3391f835275b",
+        "service_id": "e154f5fb-7ecd-11e8-8150-9c5c8e747603",
+        "pay": false,
+        "appointment": false,
+        "teacher_v2": {
+            "short_name": "Елена",
+            "name": "Титова Елена Ивановна",
+            "position": "Мастер-тренер групповых программ",
+            "imageUrl": "http://95.165.159.104:90/fitnes_t/hs/nfc_mobile/files/e639a68b-b34a-11e8-8155-9c5c8e747603.jpg"
+        },
+        "color": "#FFC0CB",
+        "availability": 5
+    },
+    {
+        "name": "Yoga ",
+        "description": "Урок, направленный на достижение полной гармонии между физической, умственной и моральной сторонами жизни. Регулярные занятия способствуют укреплению мышц, улучшению осанки, увеличению подвижности суставов.",
+        "place": "Студия 7",
+        "teacher": "Титова Елена Ивановна",
+        "startTime": "17.00",
+        "endTime": "18.30",
+        "weekDay": 2,
+        "appointment_id": "66711b53-05b2-4940-8287-1fb4737042a9",
+        "service_id": "3474cd5c-6f7c-11e8-814e-9c5c8e747603",
+        "pay": false,
+        "appointment": false,
+        "teacher_v2": {
+            "short_name": "Елена",
+            "name": "Титова Елена Ивановна",
+            "position": "Мастер-тренер групповых программ",
+            "imageUrl": "http://95.165.159.104:90/fitnes_t/hs/nfc_mobile/files/e639a68b-b34a-11e8-8155-9c5c8e747603.jpg"
+        },
+        "color": "#FFC0CB",
+        "availability": -1
+    },
+    {
+        "name": "Stretch",
+        "description": "Cистема упражнений, направленная на растяжку, развитие гибкости и улучшение осанки. ПРОДОЛЖИТЕЛЬНОСТЬ УРОКА 45 мин.",
+        "place": "Студия 1",
+        "teacher": "Титова Елена Ивановна",
+        "startTime": "12.15",
+        "endTime": "13.00",
+        "weekDay": 3,
+        "appointment_id": "cc5bddd4-29b4-4baa-8980-c2111fbfa2de",
+        "service_id": "e154f5fb-7ecd-11e8-8150-9c5c8e747603",
+        "pay": false,
+        "appointment": false,
+        "teacher_v2": {
+            "short_name": "Елена",
+            "name": "Титова Елена Ивановна",
+            "position": "Мастер-тренер групповых программ",
+            "imageUrl": "http://95.165.159.104:90/fitnes_t/hs/nfc_mobile/files/e639a68b-b34a-11e8-8155-9c5c8e747603.jpg"
+        },
+        "color": "#FFC0CB",
+        "availability": 5
+    },
+    {
+        "name": "Yoga ",
+        "description": "Урок, направленный на достижение полной гармонии между физической, умственной и моральной сторонами жизни. Регулярные занятия способствуют укреплению мышц, улучшению осанки, увеличению подвижности суставов.",
+        "place": "Студия 7",
+        "teacher": "Титова Елена Ивановна",
+        "startTime": "17.00",
+        "endTime": "18.30",
+        "weekDay": 3,
+        "appointment_id": "203fcc0b-4328-4506-b028-c018f413bfcd",
+        "service_id": "3474cd5c-6f7c-11e8-814e-9c5c8e747603",
+        "pay": false,
+        "appointment": false,
+        "teacher_v2": {
+            "short_name": "Елена",
+            "name": "Титова Елена Ивановна",
+            "position": "Мастер-тренер групповых программ",
+            "imageUrl": "http://95.165.159.104:90/fitnes_t/hs/nfc_mobile/files/e639a68b-b34a-11e8-8155-9c5c8e747603.jpg"
+        },
+        "color": "#FFC0CB",
+        "availability": -1
+    }
+]
