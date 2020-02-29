@@ -20,5 +20,6 @@ extension SchedulerItem {
     @NSManaged public var id: String
     @NSManaged public var name: String
     @NSManaged public var teacher: String
+    @NSManaged public var weekDay: Int
 
 }

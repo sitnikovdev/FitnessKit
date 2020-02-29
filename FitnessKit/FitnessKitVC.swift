@@ -40,8 +40,8 @@ class FitnessKitVC: UITableViewController, NSFetchedResultsControllerDelegate {
 
     // MARK: - Handlers
     @objc func fetchScheduler() {
-//        loadFromBundle()
         loadFromApi()
+//        loadFromBundle()
     }
     
     func loadFromBundle() {
@@ -54,7 +54,7 @@ class FitnessKitVC: UITableViewController, NSFetchedResultsControllerDelegate {
     
     func loadFromApi() {
         NetworkingService.shared.getScheduler(context: container.viewContext ) {
-            result, context in
+            result in
             switch result {
             case .success(_):
                 self.saveContext()
@@ -69,11 +69,11 @@ class FitnessKitVC: UITableViewController, NSFetchedResultsControllerDelegate {
     func loadSavedData() {
         if fetchedResultsController == nil {
             let request = SchedulerItem.createFetchRequest()
-            let sort = NSSortDescriptor(key: "name", ascending: true)
+            let sort = NSSortDescriptor(key: "weekDay", ascending: true)
             request.sortDescriptors = [sort]
             request.fetchBatchSize = 20
             
-            fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: container.viewContext, sectionNameKeyPath: "name", cacheName: nil)
+            fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: container.viewContext, sectionNameKeyPath: "weekDay", cacheName: nil)
             fetchedResultsController.delegate = self
         }
         
@@ -105,7 +105,7 @@ extension FitnessKitVC  {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return fetchedResultsController.sections![section].name
+        return WeekDays(rawValue: section + 1)?.description
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -123,3 +123,4 @@ extension FitnessKitVC  {
         return cell
     }
 }
+

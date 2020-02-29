@@ -17,6 +17,7 @@ public class SchedulerItem: NSManagedObject, Decodable {
         case id = "appointment_id"
         case name
         case teacher
+        case weekDay
     }
     
     required convenience public init(from decoder: Decoder) throws {
@@ -32,10 +33,17 @@ public class SchedulerItem: NSManagedObject, Decodable {
         id = try container.decode(String.self, forKey: .id)
         name = try container.decode(String.self, forKey: .name)
         teacher = try container.decode(String.self, forKey: .teacher)
+        weekDay = try container.decode(Int.self, forKey: .weekDay)
     }
 
 }
 
 extension CodingUserInfoKey {
     static let context = CodingUserInfoKey(rawValue: "context")
+}
+
+extension SchedulerItem {
+     func getWeek() -> String {
+        return Calendar.current.weekdaySymbols[self.weekDay - 1]
+    }
 }

@@ -15,10 +15,8 @@ final class NetworkingService  {
     static let shared = NetworkingService()
     
     let baseUrl = "https://sample.fitnesskit-admin.ru/schedule/get_group_lessons_v2/1"
-//    typealias schedulerCallBack = (_ scheduerItem: [SchedulerItem]?, _ status: Bool) -> Void
     typealias responseAPIResult = Result<[SchedulerItem], AFError>
-    typealias nsContext = NSManagedObjectContext
-    
+
 
     // MARK: - Init
     
@@ -26,16 +24,16 @@ final class NetworkingService  {
     
     // MARK: - Handlers
     
-    func getScheduler(context: NSManagedObjectContext, result: @escaping ((responseAPIResult, nsContext) -> Void))  {
+    func getScheduler(context: NSManagedObjectContext, result: @escaping ((responseAPIResult) -> Void))  {
         let decoder = JSONDecoder()
         decoder.userInfo[CodingUserInfoKey.context!] = context
         decoder.keyDecodingStrategy = .useDefaultKeys
 
         AF.request(URL(string: baseUrl)!).validate().responseDecodable(of: [SchedulerItem].self, decoder: decoder) { (response) in
             if let error = response.error {
-                result(.failure(error), context)
+                result(.failure(error))
             } else  if let scheduler = response.value {
-                result(.success(scheduler), context)
+                result(.success(scheduler))
             }
         }
     }
