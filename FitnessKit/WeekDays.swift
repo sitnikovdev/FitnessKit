@@ -14,19 +14,19 @@ enum WeekDays: Int, CustomStringConvertible {
     var description: String {
         switch self {
         case .Monday:
-            return "Monday"
+            return "Понедельник"
         case .Tuesday:
-            return "Tuesday"
+            return "Вторник"
         case .Wednesday:
-            return "Wednesday"
+            return "Среда"
         case .Thursday:
-            return "Thursday"
+            return "Четверг"
         case .Friday:
-            return "Friday"
+            return "Пятница"
         case .Saturday:
-            return "Saturday"
+            return "Суббота"
         case .Sunday:
-            return "Sunday"
+            return "Воскресенье"
         }
     }
     

@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="SchedulerItem" representedClassName="SchedulerItem" syncable="YES">
+        <attribute name="endTime" attributeType="String"/>
+        <attribute name="fitDescription" attributeType="String"/>
         <attribute name="id" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
+        <attribute name="place" attributeType="String"/>
+        <attribute name="startTime" attributeType="String"/>
         <attribute name="teacher" attributeType="String"/>
+        <attribute name="teacherImageUrl" attributeType="String"/>
+        <attribute name="teacherName" attributeType="String"/>
+        <attribute name="teacherPosition" attributeType="String"/>
+        <attribute name="teacherShortName" attributeType="String"/>
         <attribute name="weekDay" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
@@ -12,6 +20,6 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="SchedulerItem" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="SchedulerItem" positionX="-63" positionY="-18" width="128" height="223"/>
     </elements>
 </model>

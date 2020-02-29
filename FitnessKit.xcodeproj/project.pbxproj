@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		7B254DE079AAB762EE594F07 /* Pods_FitnessKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED794A600066B4D1599B9D1 /* Pods_FitnessKit.framework */; };
 		7C4363182409E80E00EC7D2A /* WeekDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4363172409E80E00EC7D2A /* WeekDays.swift */; };
+		7C43631A240A836300EC7D2A /* TeacherDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C436319240A836300EC7D2A /* TeacherDetailVC.swift */; };
+		7C43631C240A877600EC7D2A /* Displayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C43631B240A877600EC7D2A /* Displayable.swift */; };
+		7C43631E240AA68A00EC7D2A /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C43631D240AA68A00EC7D2A /* Views.swift */; };
+		7C43632C240AF6A900EC7D2A /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C43632B240AF6A900EC7D2A /* Workout.swift */; };
+		7C43632E240B008300EC7D2A /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C43632D240B008300EC7D2A /* ImageService.swift */; };
 		7C67162A2407D15900227333 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6716292407D15900227333 /* AppDelegate.swift */; };
 		7C67162C2407D15900227333 /* FitnessKitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C67162B2407D15900227333 /* FitnessKitVC.swift */; };
 		7C67162F2407D15900227333 /* FitnessKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7C67162D2407D15900227333 /* FitnessKit.xcdatamodeld */; };
@@ -24,6 +29,11 @@
 /* Begin PBXFileReference section */
 		23DFB9E89154E01FE55F3FE2 /* Pods-FitnessKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitnessKit.release.xcconfig"; path = "Target Support Files/Pods-FitnessKit/Pods-FitnessKit.release.xcconfig"; sourceTree = "<group>"; };
 		7C4363172409E80E00EC7D2A /* WeekDays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDays.swift; sourceTree = "<group>"; };
+		7C436319240A836300EC7D2A /* TeacherDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherDetailVC.swift; sourceTree = "<group>"; };
+		7C43631B240A877600EC7D2A /* Displayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Displayable.swift; sourceTree = "<group>"; };
+		7C43631D240AA68A00EC7D2A /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
+		7C43632B240AF6A900EC7D2A /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
+		7C43632D240B008300EC7D2A /* ImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		7C6716262407D15900227333 /* FitnessKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitnessKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C6716292407D15900227333 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C67162B2407D15900227333 /* FitnessKitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessKitVC.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -73,11 +83,14 @@
 		7C6716282407D15900227333 /* FitnessKit */ = {
 			isa = PBXGroup;
 			children = (
-				7C6716292407D15900227333 /* AppDelegate.swift */,
-				7CAADC352409554400907992 /* NetworkingService.swift */,
-				7C67162B2407D15900227333 /* FitnessKitVC.swift */,
 				7CFE2D5D24081C2500DBB07E /* SchedulerItem+CoreDataClass.swift */,
 				7CFE2D5E24081C2500DBB07E /* SchedulerItem+CoreDataProperties.swift */,
+				7C6716292407D15900227333 /* AppDelegate.swift */,
+				7CAADC352409554400907992 /* NetworkingService.swift */,
+				7C43632D240B008300EC7D2A /* ImageService.swift */,
+				7C67162B2407D15900227333 /* FitnessKitVC.swift */,
+				7C436319240A836300EC7D2A /* TeacherDetailVC.swift */,
+				7C43631D240AA68A00EC7D2A /* Views.swift */,
 				7C4363172409E80E00EC7D2A /* WeekDays.swift */,
 				7CAADC2B24091C4E00907992 /* Bundle+.swift */,
 				7CAADC29240919E600907992 /* fitnesskit.json */,
@@ -85,6 +98,8 @@
 				7C6716302407D15B00227333 /* Assets.xcassets */,
 				7C6716322407D15B00227333 /* LaunchScreen.storyboard */,
 				7C6716352407D15B00227333 /* Info.plist */,
+				7C43631B240A877600EC7D2A /* Displayable.swift */,
+				7C43632B240AF6A900EC7D2A /* Workout.swift */,
 			);
 			path = FitnessKit;
 			sourceTree = "<group>";
@@ -222,13 +237,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CAADC362409554400907992 /* NetworkingService.swift in Sources */,
+				7C43631E240AA68A00EC7D2A /* Views.swift in Sources */,
 				7C67162C2407D15900227333 /* FitnessKitVC.swift in Sources */,
 				7CAADC2C24091C4E00907992 /* Bundle+.swift in Sources */,
 				7C67162F2407D15900227333 /* FitnessKit.xcdatamodeld in Sources */,
 				7CFE2D6024081C2500DBB07E /* SchedulerItem+CoreDataProperties.swift in Sources */,
+				7C43631A240A836300EC7D2A /* TeacherDetailVC.swift in Sources */,
 				7CFE2D5F24081C2500DBB07E /* SchedulerItem+CoreDataClass.swift in Sources */,
+				7C43632E240B008300EC7D2A /* ImageService.swift in Sources */,
 				7C4363182409E80E00EC7D2A /* WeekDays.swift in Sources */,
+				7C43631C240A877600EC7D2A /* Displayable.swift in Sources */,
 				7C67162A2407D15900227333 /* AppDelegate.swift in Sources */,
+				7C43632C240AF6A900EC7D2A /* Workout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

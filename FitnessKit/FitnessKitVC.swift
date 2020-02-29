@@ -14,6 +14,7 @@ class FitnessKitVC: UITableViewController, NSFetchedResultsControllerDelegate {
     var container: NSPersistentContainer!
     var fetchedResultsController: NSFetchedResultsController<SchedulerItem>!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var selectedItem: Displayable?
 
 
     // MARK: - Setup
@@ -56,7 +57,7 @@ class FitnessKitVC: UITableViewController, NSFetchedResultsControllerDelegate {
         NetworkingService.shared.getScheduler(context: container.viewContext ) {
             result in
             switch result {
-            case .success(_):
+            case .success(let items):
                 self.saveContext()
                 self.loadSavedData()
             case .failure(let error):
@@ -118,9 +119,23 @@ extension FitnessKitVC  {
 //        let cell = tableView.dequeueReusableCell(withIdentifier: "CellId", for: indexPath)
         
         let  schedulerItem = fetchedResultsController.object(at: indexPath)
-        cell.textLabel?.text = " \(schedulerItem.name) : \(indexPath.row + 1)"
+        let workout = schedulerItem.name
+//        cell.textLabel?.text = " \(schedulerItem.name) : \(indexPath.row + 1)"
+        
+        cell.textLabel?.text = Workout(rawValue: workout)?.description
         cell.detailTextLabel?.text = schedulerItem.teacher
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        selectedItem = fetchedResultsController.object(at: indexPath)
+        return indexPath
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let teacherDetailVC = TeacherDetailVC()
+        teacherDetailVC.data = selectedItem
+        navigationController?.pushViewController(teacherDetailVC, animated: true)
     }
 }
 
