@@ -14,6 +14,7 @@
 		7C43631E240AA68A00EC7D2A /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C43631D240AA68A00EC7D2A /* Views.swift */; };
 		7C43632C240AF6A900EC7D2A /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C43632B240AF6A900EC7D2A /* Workout.swift */; };
 		7C43632E240B008300EC7D2A /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C43632D240B008300EC7D2A /* ImageService.swift */; };
+		7C436330240B191000EC7D2A /* SchedulerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C43632F240B191000EC7D2A /* SchedulerCell.swift */; };
 		7C67162A2407D15900227333 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6716292407D15900227333 /* AppDelegate.swift */; };
 		7C67162C2407D15900227333 /* FitnessKitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C67162B2407D15900227333 /* FitnessKitVC.swift */; };
 		7C67162F2407D15900227333 /* FitnessKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7C67162D2407D15900227333 /* FitnessKit.xcdatamodeld */; };
@@ -34,6 +35,7 @@
 		7C43631D240AA68A00EC7D2A /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		7C43632B240AF6A900EC7D2A /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		7C43632D240B008300EC7D2A /* ImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
+		7C43632F240B191000EC7D2A /* SchedulerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerCell.swift; sourceTree = "<group>"; };
 		7C6716262407D15900227333 /* FitnessKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitnessKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C6716292407D15900227333 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C67162B2407D15900227333 /* FitnessKitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessKitVC.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -100,6 +102,7 @@
 				7C6716352407D15B00227333 /* Info.plist */,
 				7C43631B240A877600EC7D2A /* Displayable.swift */,
 				7C43632B240AF6A900EC7D2A /* Workout.swift */,
+				7C43632F240B191000EC7D2A /* SchedulerCell.swift */,
 			);
 			path = FitnessKit;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				7CAADC362409554400907992 /* NetworkingService.swift in Sources */,
 				7C43631E240AA68A00EC7D2A /* Views.swift in Sources */,
 				7C67162C2407D15900227333 /* FitnessKitVC.swift in Sources */,
+				7C436330240B191000EC7D2A /* SchedulerCell.swift in Sources */,
 				7CAADC2C24091C4E00907992 /* Bundle+.swift in Sources */,
 				7C67162F2407D15900227333 /* FitnessKit.xcdatamodeld in Sources */,
 				7CFE2D6024081C2500DBB07E /* SchedulerItem+CoreDataProperties.swift in Sources */,

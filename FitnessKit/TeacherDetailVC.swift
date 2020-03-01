@@ -38,11 +38,11 @@ class TeacherDetailVC: UIViewController {
     var item4Text = BaseItemText()
     var item5Text = BaseItemText()
     
-    var teacherImage = BaseImage(#imageLiteral(resourceName: "teacher"))
+    var teacherImage = BaseImage(#imageLiteral(resourceName: "teacher"), frame: CGRect(x: 100, y: 150, width: 70, height: 70))
 
     var data: Displayable? {
         didSet {
-            if let imageUrl = data?.item6.value {
+            if let imageUrl = data?.trainerImage.value {
                 let url = URL(string: imageUrl)
                 ImageService.shared.getImage(withURL: url!) { (result) in
                     switch result {
@@ -78,7 +78,7 @@ class TeacherDetailVC: UIViewController {
             titleLabel.topAnchor.constraint(equalToSystemSpacingBelow: guide.topAnchor, multiplier: 1),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
-        titleLabel.text = data.titleLableText
+        titleLabel.text = data.workoutName
         
         // subtitle: Студия 7
         view.addSubview(subtitleLabel)
@@ -86,7 +86,7 @@ class TeacherDetailVC: UIViewController {
             subtitleLabel.topAnchor.constraint(equalToSystemSpacingBelow: titleLabel.lastBaselineAnchor, multiplier: 0.5),
             subtitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
-        subtitleLabel.text = data.subTitleLableText
+        subtitleLabel.text = data.workoutPlace
         
         // день недели занятия
         view.addSubview(item4Text)
@@ -94,7 +94,7 @@ class TeacherDetailVC: UIViewController {
             item4Text.topAnchor.constraint(equalToSystemSpacingBelow: subtitleLabel.lastBaselineAnchor, multiplier: 0.5),
             item4Text.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
-        item4Text.text = data.item4.value
+        item4Text.text = data.week.value
         
         // время занятия
         view.addSubview(item5Text)
@@ -102,7 +102,7 @@ class TeacherDetailVC: UIViewController {
             item5Text.topAnchor.constraint(equalToSystemSpacingBelow: item4Text.lastBaselineAnchor, multiplier: 0.5),
             item5Text.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
-        item5Text.text = data.item5.value
+        item5Text.text = data.time.value
         
 
         // image: Фото тренера
@@ -126,7 +126,7 @@ class TeacherDetailVC: UIViewController {
             item1Text.topAnchor.constraint(equalTo: teacherImage.topAnchor, constant: 6),
             item1Text.leadingAnchor.constraint(equalToSystemSpacingAfter: teacherImage.trailingAnchor, multiplier: 3.5)
         ])
-        item1Text.text = data.item1.value
+        item1Text.text = data.trainerName.value
         // teacher position: Мастер-тренер групповых программ
         view.addSubview(item2Text)
         item2Text.font = .preferredFont(forTextStyle: .footnote)
@@ -134,7 +134,7 @@ class TeacherDetailVC: UIViewController {
             item2Text.topAnchor.constraint(equalToSystemSpacingBelow: item1Text.lastBaselineAnchor, multiplier: 0.5),
             item2Text.leadingAnchor.constraint(equalToSystemSpacingAfter: teacherImage.trailingAnchor, multiplier: 3.5)
         ])
-        item2Text.text =  data.item2.value
+        item2Text.text =  data.trainerPosition.value
         
         // fit description: Описание занятия
         view.addSubview(item3Text)
@@ -145,7 +145,7 @@ class TeacherDetailVC: UIViewController {
             item3Text.leadingAnchor.constraint(equalToSystemSpacingAfter: guide.leadingAnchor, multiplier: 2),
             item3Text.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant:  -8)
         ])
-        item3Text.text =  data.item3.value
+        item3Text.text =  data.workoutDescription.value
 
     }
 }

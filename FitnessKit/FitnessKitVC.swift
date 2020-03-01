@@ -11,14 +11,16 @@ import CoreData
 
 class FitnessKitVC: UITableViewController, NSFetchedResultsControllerDelegate {
     // MARK: - Properties
+    let sectionHeaderSize:CGFloat = 60
+    let estimatedRowHeight:CGFloat = 150
     var container: NSPersistentContainer!
     var fetchedResultsController: NSFetchedResultsController<SchedulerItem>!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var selectedItem: Displayable?
-
-
+    
+    
     // MARK: - Setup
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         container = NSPersistentContainer(name: "FitnessKit")
@@ -29,20 +31,31 @@ class FitnessKitVC: UITableViewController, NSFetchedResultsControllerDelegate {
                 print("Unresolved error \(error)")
             }
         }
-
+        
         title = "Fitness Kit"
         navigationController?.navigationBar.prefersLargeTitles = true
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "CellId")
-
+        
+        configureTableView()
+        
         performSelector(inBackground: #selector(fetchScheduler), with: nil)
         loadSavedData()
     }
     
-
+    
+    
     // MARK: - Handlers
+    
+    func configureTableView() {
+        tableView.register(SchedulerCell.self, forCellReuseIdentifier: SchedulerCell.reuseIdentifer)
+        tableView.separatorStyle = .none
+        tableView.rowHeight = 130
+        tableView.estimatedRowHeight = self.estimatedRowHeight
+        tableView.clipsToBounds = true
+        tableView.isOpaque = true
+    }
     @objc func fetchScheduler() {
         loadFromApi()
-//        loadFromBundle()
+        //        loadFromBundle()
     }
     
     func loadFromBundle() {
@@ -57,7 +70,7 @@ class FitnessKitVC: UITableViewController, NSFetchedResultsControllerDelegate {
         NetworkingService.shared.getScheduler(context: container.viewContext ) {
             result in
             switch result {
-            case .success(let items):
+            case .success(_):
                 self.saveContext()
                 self.loadSavedData()
             case .failure(let error):
@@ -78,7 +91,7 @@ class FitnessKitVC: UITableViewController, NSFetchedResultsControllerDelegate {
             fetchedResultsController.delegate = self
         }
         
-
+        
         do {
             try fetchedResultsController.performFetch()
             tableView.reloadData()
@@ -105,25 +118,56 @@ extension FitnessKitVC  {
         return fetchedResultsController.sections?.count ?? 0
     }
     
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return self.sectionHeaderSize
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let sectionLabel = BaseItemText()
+        sectionLabel.font = .preferredFont(forTextStyle: .title2)
+        
+        let sectionInfo = fetchedResultsController.sections![section].name
+        sectionLabel.text = WeekDays(rawValue: Int(sectionInfo)!)?.description
+        sectionLabel.textAlignment = .center
+        
+        let sectionView = BaseView()
+        let sectionContainerView = BaseView(backgroundColor: #colorLiteral(red: 0.7176470588, green: 0.7176470588, blue: 0.7176470588, alpha: 1), borderWidth: 1)
+        sectionContainerView.addSubview(sectionLabel)
+        NSLayoutConstraint.activate([
+            sectionLabel.centerXAnchor.constraint(equalTo: sectionContainerView.centerXAnchor),
+            sectionLabel.centerYAnchor.constraint(equalTo: sectionContainerView.centerYAnchor)
+        ])
+        
+        sectionView.addSubview(sectionContainerView)
+        
+        
+        NSLayoutConstraint.activate([
+            sectionContainerView.topAnchor.constraint(equalTo: sectionView.topAnchor, constant: 8),
+            sectionContainerView.leadingAnchor.constraint(equalTo: sectionView.leadingAnchor, constant: 8),
+            sectionContainerView.bottomAnchor.constraint(equalTo: sectionView.bottomAnchor, constant: 8),
+            sectionContainerView.trailingAnchor.constraint(equalTo: sectionView.trailingAnchor, constant: -8)
+        ])
+        
+        return sectionView
+    }
+    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return WeekDays(rawValue: section + 1)?.description
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionInfo = fetchedResultsController.sections![section]
         return sectionInfo.numberOfObjects
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "CellID")
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "CellId", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SchedulerCell.reuseIdentifer, for: indexPath) as? SchedulerCell else {
+            fatalError("""
+                Expected \(SchedulerCell.self) type for reuseIdentifier \(SchedulerCell.reuseIdentifer).
+                """)
+        }
+        cell.schedulerItem = fetchedResultsController.object(at: indexPath)
         
-        let  schedulerItem = fetchedResultsController.object(at: indexPath)
-        let workout = schedulerItem.name
-//        cell.textLabel?.text = " \(schedulerItem.name) : \(indexPath.row + 1)"
-        
-        cell.textLabel?.text = Workout(rawValue: workout)?.description
-        cell.detailTextLabel?.text = schedulerItem.teacher
         return cell
     }
     

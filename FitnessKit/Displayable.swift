@@ -6,12 +6,14 @@
 //  Copyright © 2020 Oleg Sitnikov. All rights reserved.
 //
 protocol Displayable {
-    var titleLableText: String { get }
-    var subTitleLableText: String { get }
-    var item1: (label: String, value: String) { get }
-    var item2: (label: String, value: String) { get }
-    var item3: (label: String, value: String) { get }
-    var item4: (label: String, value: String) { get }
-    var item5: (label: String, value: String) { get }
-    var item6: (label: String, value: String) { get }
+    var workoutName: String { get }
+    var workoutPlace: String { get }
+    var trainerName: (label: String, value: String) { get }
+    var trainerPosition: (label: String, value: String) { get }
+    var workoutDescription: (label: String, value: String) { get }
+    var week: (label: String, value: String) { get }
+    var time: (label: String, value: String) { get }
+    var workoutStartTime: (label: String, value: String) { get }
+    var workoutEndTime: (label: String, value: String) { get }
+    var trainerImage: (label: String, value: String) { get }
 }

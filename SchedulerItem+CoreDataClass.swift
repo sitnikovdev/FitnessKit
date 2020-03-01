@@ -70,35 +70,47 @@ extension CodingUserInfoKey {
 
 extension SchedulerItem: Displayable {
 
-    var subTitleLableText: String {
+
+    var workoutPlace: String {
         place
     }
     
-    var titleLableText: String {
+    var workoutName: String {
         Workout(rawValue: name)?.description ?? ""
     }
+    
 
-    var item1: (label: String, value: String) {
+    var trainerName: (label: String, value: String) {
         ("ИНСТРУКТОР",  teacherName)
     }
     
-    var item2: (label: String, value: String) {
+    var trainerPosition: (label: String, value: String) {
         ("ПОЗИЦИЯ", teacherPosition)
     }
     
-    var item3: (label: String, value: String) {
+    var workoutDescription: (label: String, value: String) {
         ("ОПИСАНИЕ", fitDescription)
     }
     
-    var item4: (label: String, value: String) {
+    var week: (label: String, value: String) {
         ("День недели", WeekDays(rawValue: weekDay + 1)?.description ?? "")
     }
     
-    var item5: (label: String, value: String) {
+    var time: (label: String, value: String) {
         ("Время заняния", "c \(startTime) до \(endTime)" )
     }
     
-    var item6: (label: String, value: String) {
+    var trainerImage: (label: String, value: String) {
         ("URL фото тренера", teacherImageUrl )
     }
+    
+    var workoutStartTime: (label: String, value: String) {
+        ("с", startTime)
+    }
+    
+    var workoutEndTime: (label: String, value: String) {
+        ("до", endTime)
+    }
+    
+
 }
