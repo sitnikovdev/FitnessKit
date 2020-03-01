@@ -10,28 +10,38 @@ import UIKit
 class SchedulerCell: UITableViewCell {
     // MARK: - Properties
     
-    let viewContainer = BaseView(backgroundColor: .white, cornerRadius: 6, borderWidth: 1)
+//    let viewContainer = BaseView(backgroundColor: .white, cornerRadius: 6, borderWidth: 1)
+    
+    lazy var viewContainer: UIView = {
+        let view =  BaseView(backgroundColor: .white, cornerRadius: 6, borderWidth: 0.5)
+        view.layer.borderColor = UIColor.lightGray.cgColor
+        
+        return view
+    }()
     let workout = BaseItemText()
     let startTime = BaseItemText()
     let endTime = BaseItemText()
     let place = BaseItemText()
     var dividerView: UIView =  {
-        let view = BaseView(backgroundColor: .systemGray)
+        let view = BaseView(backgroundColor: #colorLiteral(red: 0.9843137255, green: 0.5254901961, blue: 0.2117647059, alpha: 1))
         return view
     }()
     
-    let teacher = BaseItemText()
+    let trainerLabel = BaseItemText()
     let teacherImage = BaseImage(#imageLiteral(resourceName: "teacher"), frame: CGRect(x: 100, y: 100, width: 45, height: 45))
-    let locationImage = BaseImage(#imageLiteral(resourceName: "icn_location") , frame: CGRect(x: 100, y: 150, width: 70, height: 70))
+    let locationImage = BaseImage(#imageLiteral(resourceName: "location") , frame: CGRect(x: 100, y: 150, width: 70, height: 70))
     let timeDivider = BaseImage(#imageLiteral(resourceName: "icn_time"), frame: CGRect(x: 100, y: 100, width: 100, height: 20))
     let disclosure = BaseImage(#imageLiteral(resourceName: "icn_disclosure"), frame: CGRect(x: 100, y: 100, width: 50, height: 50))
+    let clockIcon = BaseImage(#imageLiteral(resourceName: "clock"), frame: CGRect(x: 100, y: 100, width: 50, height: 50))
+    
     
     static let reuseIdentifer = "SchedulerCell"
     var schedulerItem: Displayable! {
         didSet {
             workout.text = schedulerItem.workoutName
+            workout.textColor = #colorLiteral(red: 0.5040810704, green: 0.4012541175, blue: 0.3648088276, alpha: 1)
             place.text = schedulerItem.workoutPlace
-            teacher.text = schedulerItem.trainerName.value
+            trainerLabel.text = schedulerItem.trainerName.value
             startTime.text = schedulerItem.workoutStartTime.value
             endTime.text = schedulerItem.workoutEndTime.value
             let imageUrl = URL(string: schedulerItem.trainerImage.value)
@@ -71,22 +81,24 @@ class SchedulerCell: UITableViewCell {
         viewContainer.addSubview(startTime)
         startTime.font = .preferredFont(forTextStyle: .subheadline)
         NSLayoutConstraint.activate([
-            startTime.topAnchor.constraint(equalTo: viewContainer.topAnchor, constant: 32),
+            startTime.topAnchor.constraint(equalTo: viewContainer.topAnchor, constant: 24),
             startTime.leadingAnchor.constraint(equalTo: viewContainer.leadingAnchor, constant: 20)
         ])
         
         //  time divider
-        viewContainer.addSubview(timeDivider)
+        viewContainer.addSubview(clockIcon)
         NSLayoutConstraint.activate([
-            timeDivider.topAnchor.constraint(equalTo: startTime.bottomAnchor, constant: 8),
-            timeDivider.leadingAnchor.constraint(equalTo: viewContainer.leadingAnchor, constant: 20)
+            clockIcon.heightAnchor.constraint(equalToConstant: 16),
+            clockIcon.widthAnchor.constraint(equalToConstant: 16),
+            clockIcon.topAnchor.constraint(equalTo: startTime.bottomAnchor, constant: 4),
+            clockIcon.leadingAnchor.constraint(equalTo: viewContainer.leadingAnchor, constant: 32)
         ])
         
         // end time
         viewContainer.addSubview(endTime)
         endTime.font = .preferredFont(forTextStyle: .subheadline)
         NSLayoutConstraint.activate([
-            endTime.topAnchor.constraint(equalTo: startTime.lastBaselineAnchor, constant: 24),
+            endTime.topAnchor.constraint(equalTo: startTime.lastBaselineAnchor, constant: 32),
             endTime.leadingAnchor.constraint(equalTo: viewContainer.leadingAnchor, constant: 20)
         ])
         
@@ -94,7 +106,7 @@ class SchedulerCell: UITableViewCell {
         // divider
         viewContainer.addSubview(dividerView)
         NSLayoutConstraint.activate([
-            dividerView.widthAnchor.constraint(equalToConstant: 1),
+            dividerView.widthAnchor.constraint(equalToConstant: 3),
             dividerView.heightAnchor.constraint(equalToConstant: 70),
             dividerView.centerYAnchor.constraint(equalTo: viewContainer.centerYAnchor),
             dividerView.leadingAnchor.constraint(equalTo: startTime.trailingAnchor, constant: 20)
@@ -102,7 +114,7 @@ class SchedulerCell: UITableViewCell {
         
         // workout
         viewContainer.addSubview(workout)
-        workout.font = .boldSystemFont(ofSize: 17)
+        workout.font = .boldSystemFont(ofSize: 20)
         NSLayoutConstraint.activate([
             workout.topAnchor.constraint(equalTo: viewContainer.topAnchor, constant: 8),
             workout.leadingAnchor.constraint(equalTo: dividerView.trailingAnchor, constant: 72)
@@ -112,7 +124,9 @@ class SchedulerCell: UITableViewCell {
         // location
         viewContainer.addSubview(locationImage)
         NSLayoutConstraint.activate([
-            locationImage.topAnchor.constraint(equalTo: workout.lastBaselineAnchor, constant: 12),
+            locationImage.heightAnchor.constraint(equalToConstant: 16),
+            locationImage.widthAnchor.constraint(equalToConstant: 12),
+            locationImage.topAnchor.constraint(equalTo: workout.lastBaselineAnchor, constant: 10),
             locationImage.leadingAnchor.constraint(equalTo: workout.leadingAnchor, constant: 0)
         ])
         
@@ -141,10 +155,11 @@ class SchedulerCell: UITableViewCell {
         teacherImage.clipsToBounds = true
         
         // trainer
-        viewContainer.addSubview(teacher)
+        viewContainer.addSubview(trainerLabel)
+        trainerLabel.font = .preferredFont(forTextStyle: .body)
         NSLayoutConstraint.activate([
-            teacher.topAnchor.constraint(equalTo: place.lastBaselineAnchor, constant: 30),
-            teacher.leadingAnchor.constraint(equalTo: teacherImage.trailingAnchor, constant: 10)
+            trainerLabel.topAnchor.constraint(equalTo: teacherImage.topAnchor, constant: 12),
+            trainerLabel.leadingAnchor.constraint(equalTo: teacherImage.trailingAnchor, constant: 10)
         ])
         
         // disclosure

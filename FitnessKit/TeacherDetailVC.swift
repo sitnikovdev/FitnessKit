@@ -10,14 +10,23 @@ import UIKit
 
 class TeacherDetailVC: UIViewController {
     // MARK: - Properties
-    lazy var titleLabel: UILabel = {
+    
+    lazy var viewContainer: UIView = {
+        let view =  BaseView(backgroundColor: .white, cornerRadius: 6, borderWidth: 0.5)
+        view.layer.borderColor = UIColor.lightGray.cgColor
+
+        return view
+    }()
+    
+    lazy var workoutLabel: UILabel = {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .largeTitle)
+        label.textColor = #colorLiteral(red: 0.5040810704, green: 0.4012541175, blue: 0.3648088276, alpha: 1)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    lazy var subtitleLabel: UILabel = {
+    lazy var placeLabel: UILabel = {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .callout)
         label.textColor = .systemGray
@@ -26,19 +35,18 @@ class TeacherDetailVC: UIViewController {
     }()
     
 
-    var item1Label = BaseItemLabel()
-    var item1Text = BaseItemText()
-    
-    var item2Label = BaseItemLabel()
-    var item2Text = BaseItemText()
-    
-    var item3Label = BaseItemLabel()
-    var item3Text = BaseItemText()
-
-    var item4Text = BaseItemText()
-    var item5Text = BaseItemText()
+    var trainerNameLabel = BaseItemText()
+    var trainerPositionLabel = BaseItemText()
+    var workoutDescriptionLabel = BaseItemText()
+    var weekDayLabel = BaseItemText()
+    var timesLabel = BaseItemText()
     
     var teacherImage = BaseImage(#imageLiteral(resourceName: "teacher"), frame: CGRect(x: 100, y: 150, width: 70, height: 70))
+    var calendarIcon = BaseImage(#imageLiteral(resourceName: "calendar"), frame: CGRect(x: 100, y: 150, width: 70, height: 70))
+    var locationIcon = BaseImage(#imageLiteral(resourceName: "location"), frame: CGRect(x: 100, y: 150, width: 70, height: 70))
+    var clockIcon = BaseImage(#imageLiteral(resourceName: "clock"), frame: CGRect(x: 100, y: 150, width: 70, height: 70))
+    
+    let divider = BaseView(backgroundColor: #colorLiteral(red: 0.9843137255, green: 0.5254901961, blue: 0.2117647059, alpha: 1))
 
     var data: Displayable? {
         didSet {
@@ -61,9 +69,9 @@ class TeacherDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        navigationController?.navigationBar.prefersLargeTitles = false
         configureView()
     }
-    
 
     // MARK: - Handlers
     
@@ -72,46 +80,83 @@ class TeacherDetailVC: UIViewController {
         
         let guide = view.safeAreaLayoutGuide
         
-        // title: YOGA
-        view.addSubview(titleLabel)
+        // view container
+        view.addSubview(viewContainer)
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalToSystemSpacingBelow: guide.topAnchor, multiplier: 1),
-            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            viewContainer.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 8),
+            viewContainer.topAnchor.constraint(equalTo: guide.topAnchor),
+            viewContainer.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: -8),
+            viewContainer.bottomAnchor.constraint(equalTo: guide.bottomAnchor)
         ])
-        titleLabel.text = data.workoutName
-        
-        // subtitle: Студия 7
-        view.addSubview(subtitleLabel)
+
+        //  workout title
+        viewContainer.addSubview(workoutLabel)
+        workoutLabel.text = data.workoutName
         NSLayoutConstraint.activate([
-            subtitleLabel.topAnchor.constraint(equalToSystemSpacingBelow: titleLabel.lastBaselineAnchor, multiplier: 0.5),
-            subtitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            workoutLabel.topAnchor.constraint(equalToSystemSpacingBelow: viewContainer.topAnchor, multiplier: 1),
+            workoutLabel.centerXAnchor.constraint(equalTo: viewContainer.centerXAnchor)
         ])
-        subtitleLabel.text = data.workoutPlace
         
+        // location icon
+        viewContainer.addSubview(locationIcon)
+        NSLayoutConstraint.activate([
+            locationIcon.heightAnchor.constraint(equalToConstant: 16),
+            locationIcon.widthAnchor.constraint(equalToConstant: 12),
+            locationIcon.topAnchor.constraint(equalTo: workoutLabel.lastBaselineAnchor, constant: 24),
+            locationIcon.leadingAnchor.constraint(equalTo: workoutLabel.leadingAnchor, constant: 0)
+        ])
+
+        // place: Студия 7
+        viewContainer.addSubview(placeLabel)
+        placeLabel.text = data.workoutPlace
+        NSLayoutConstraint.activate([
+            placeLabel.topAnchor.constraint(equalTo: locationIcon.topAnchor, constant: -2),
+            placeLabel.leadingAnchor.constraint(equalTo: locationIcon.trailingAnchor, constant: 8)
+        ])
+        // calendar icon
+        viewContainer.addSubview(calendarIcon)
+        NSLayoutConstraint.activate([
+            calendarIcon.widthAnchor.constraint(equalToConstant: 24),
+            calendarIcon.heightAnchor.constraint(equalToConstant: 24),
+            calendarIcon.topAnchor.constraint(equalTo: placeLabel.lastBaselineAnchor, constant: 32),
+            calendarIcon.leadingAnchor.constraint(equalTo: viewContainer.leadingAnchor, constant: 16)
+        ])
+
         // день недели занятия
-        view.addSubview(item4Text)
+        viewContainer.addSubview(weekDayLabel)
+        weekDayLabel.textColor = #colorLiteral(red: 0.3000817895, green: 0.5665410757, blue: 0.4783787131, alpha: 1)
+        weekDayLabel.text = data.week.value
         NSLayoutConstraint.activate([
-            item4Text.topAnchor.constraint(equalToSystemSpacingBelow: subtitleLabel.lastBaselineAnchor, multiplier: 0.5),
-            item4Text.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            weekDayLabel.topAnchor.constraint(equalTo: calendarIcon.topAnchor, constant: 0),
+            weekDayLabel.leadingAnchor.constraint(equalTo: calendarIcon.trailingAnchor, constant: 8)
         ])
-        item4Text.text = data.week.value
         
+        // clock icon
+        viewContainer.addSubview(clockIcon)
+        NSLayoutConstraint.activate([
+            clockIcon.widthAnchor.constraint(equalToConstant: 16),
+            clockIcon.heightAnchor.constraint(equalToConstant: 16),
+            clockIcon.topAnchor.constraint(equalTo: calendarIcon.bottomAnchor, constant: 8),
+            clockIcon.leadingAnchor.constraint(equalTo: calendarIcon.leadingAnchor, constant: 4)
+        ])
+
         // время занятия
-        view.addSubview(item5Text)
+        viewContainer.addSubview(timesLabel)
+        timesLabel.text = data.time.value
+        timesLabel.font = .preferredFont(forTextStyle: .subheadline)
         NSLayoutConstraint.activate([
-            item5Text.topAnchor.constraint(equalToSystemSpacingBelow: item4Text.lastBaselineAnchor, multiplier: 0.5),
-            item5Text.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            timesLabel.topAnchor.constraint(equalTo: calendarIcon.topAnchor, constant: 30),
+            timesLabel.leadingAnchor.constraint(equalTo: weekDayLabel.leadingAnchor, constant: 0)
         ])
-        item5Text.text = data.time.value
-        
+
 
         // image: Фото тренера
-        view.addSubview(teacherImage)
+        viewContainer.addSubview(teacherImage)
         NSLayoutConstraint.activate([
             teacherImage.widthAnchor.constraint(equalToConstant: 70),
             teacherImage.heightAnchor.constraint(equalToConstant: 70),
-            teacherImage.leadingAnchor.constraint(equalToSystemSpacingAfter: guide.leadingAnchor, multiplier: 1),
-            teacherImage.topAnchor.constraint(equalToSystemSpacingBelow: item4Text.lastBaselineAnchor, multiplier: 4)
+            teacherImage.leadingAnchor.constraint(equalToSystemSpacingAfter: viewContainer.leadingAnchor, multiplier: 1),
+            teacherImage.topAnchor.constraint(equalToSystemSpacingBelow: weekDayLabel.lastBaselineAnchor, multiplier: 4)
         ])
 
         teacherImage.layer.borderWidth = 1
@@ -121,31 +166,40 @@ class TeacherDetailVC: UIViewController {
         teacherImage.clipsToBounds = true
 
         // teacher name: Титова Елена Ивановна
-        view.addSubview(item1Text)
+        viewContainer.addSubview(trainerNameLabel)
+        trainerNameLabel.text = data.trainerName.value
         NSLayoutConstraint.activate([
-            item1Text.topAnchor.constraint(equalTo: teacherImage.topAnchor, constant: 6),
-            item1Text.leadingAnchor.constraint(equalToSystemSpacingAfter: teacherImage.trailingAnchor, multiplier: 3.5)
+            trainerNameLabel.topAnchor.constraint(equalTo: teacherImage.topAnchor, constant: 20),
+            trainerNameLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: teacherImage.trailingAnchor, multiplier: 3.5)
         ])
-        item1Text.text = data.trainerName.value
         // teacher position: Мастер-тренер групповых программ
-        view.addSubview(item2Text)
-        item2Text.font = .preferredFont(forTextStyle: .footnote)
+        viewContainer.addSubview(trainerPositionLabel)
+        trainerPositionLabel.text =  data.trainerPosition.value
+        trainerPositionLabel.font = .preferredFont(forTextStyle: .footnote)
         NSLayoutConstraint.activate([
-            item2Text.topAnchor.constraint(equalToSystemSpacingBelow: item1Text.lastBaselineAnchor, multiplier: 0.5),
-            item2Text.leadingAnchor.constraint(equalToSystemSpacingAfter: teacherImage.trailingAnchor, multiplier: 3.5)
+            trainerPositionLabel.topAnchor.constraint(equalTo: trainerNameLabel.lastBaselineAnchor, constant: 4),
+            trainerPositionLabel.leadingAnchor.constraint(equalTo: teacherImage.trailingAnchor, constant: 4)
         ])
-        item2Text.text =  data.trainerPosition.value
-        
+
+        // divider
+        viewContainer.addSubview(divider)
+        NSLayoutConstraint.activate([
+            divider.heightAnchor.constraint(equalToConstant: 3),
+            divider.widthAnchor.constraint(equalToConstant: 330),
+            divider.topAnchor.constraint(equalTo: trainerPositionLabel.bottomAnchor, constant: 32),
+            divider.centerXAnchor.constraint(equalTo: viewContainer.centerXAnchor)
+        ])
+
         // fit description: Описание занятия
-        view.addSubview(item3Text)
-        item3Text.numberOfLines = 0
-        item3Text.font = .preferredFont(forTextStyle: .body)
+        viewContainer.addSubview(workoutDescriptionLabel)
+        workoutDescriptionLabel.text =  data.workoutDescription.value
+        workoutDescriptionLabel.numberOfLines = 0
+        workoutDescriptionLabel.font = .preferredFont(forTextStyle: .body)
         NSLayoutConstraint.activate([
-            item3Text.topAnchor.constraint(equalToSystemSpacingBelow: teacherImage.bottomAnchor, multiplier: 1.6),
-            item3Text.leadingAnchor.constraint(equalToSystemSpacingAfter: guide.leadingAnchor, multiplier: 2),
-            item3Text.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant:  -8)
+            workoutDescriptionLabel.topAnchor.constraint(equalTo: divider.bottomAnchor, constant:  16),
+            workoutDescriptionLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: viewContainer.leadingAnchor, multiplier: 2),
+            workoutDescriptionLabel.trailingAnchor.constraint(equalTo: viewContainer.trailingAnchor, constant:  -8)
         ])
-        item3Text.text =  data.workoutDescription.value
 
     }
 }

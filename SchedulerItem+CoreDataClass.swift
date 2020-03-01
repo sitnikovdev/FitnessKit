@@ -81,19 +81,19 @@ extension SchedulerItem: Displayable {
     
 
     var trainerName: (label: String, value: String) {
-        ("ИНСТРУКТОР",  teacherName)
+        ("Инструктор",  teacherName)
     }
     
     var trainerPosition: (label: String, value: String) {
-        ("ПОЗИЦИЯ", teacherPosition)
+        ("Позиция тренера", teacherPosition)
     }
     
     var workoutDescription: (label: String, value: String) {
-        ("ОПИСАНИЕ", fitDescription)
+        ("Описание занятия", fitDescription)
     }
     
     var week: (label: String, value: String) {
-        ("День недели", WeekDays(rawValue: weekDay + 1)?.description ?? "")
+        ("День недели", WeekDays(rawValue: weekDay)?.description ?? "")
     }
     
     var time: (label: String, value: String) {
@@ -101,7 +101,7 @@ extension SchedulerItem: Displayable {
     }
     
     var trainerImage: (label: String, value: String) {
-        ("URL фото тренера", teacherImageUrl )
+        ("Фото тренера", teacherImageUrl )
     }
     
     var workoutStartTime: (label: String, value: String) {

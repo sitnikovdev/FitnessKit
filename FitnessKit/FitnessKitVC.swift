@@ -11,7 +11,7 @@ import CoreData
 
 class FitnessKitVC: UITableViewController, NSFetchedResultsControllerDelegate {
     // MARK: - Properties
-    let sectionHeaderSize:CGFloat = 60
+    let sectionHeaderSize:CGFloat = 30
     let estimatedRowHeight:CGFloat = 150
     var container: NSPersistentContainer!
     var fetchedResultsController: NSFetchedResultsController<SchedulerItem>!
@@ -32,7 +32,7 @@ class FitnessKitVC: UITableViewController, NSFetchedResultsControllerDelegate {
             }
         }
         
-        title = "Fitness Kit"
+        title = "Фитнес Кит"
         navigationController?.navigationBar.prefersLargeTitles = true
         
         configureTableView()
@@ -41,6 +41,10 @@ class FitnessKitVC: UITableViewController, NSFetchedResultsControllerDelegate {
         loadSavedData()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
     
     
     // MARK: - Handlers
@@ -57,15 +61,7 @@ class FitnessKitVC: UITableViewController, NSFetchedResultsControllerDelegate {
         loadFromApi()
         //        loadFromBundle()
     }
-    
-    func loadFromBundle() {
-        DispatchQueue.main.async {
-            _ = Bundle.main.decode([SchedulerItem].self, from: "fitnesskit.json", context: self.container.viewContext)
-            self.saveContext()
-            self.loadSavedData()
-        }
-    }
-    
+
     func loadFromApi() {
         NetworkingService.shared.getScheduler(context: container.viewContext ) {
             result in
@@ -79,14 +75,21 @@ class FitnessKitVC: UITableViewController, NSFetchedResultsControllerDelegate {
         }
     }
     
+    func loadFromBundle() {
+        DispatchQueue.main.async {
+            _ = Bundle.main.decode([SchedulerItem].self, from: "fitnesskit.json", context: self.container.viewContext)
+            self.saveContext()
+            self.loadSavedData()
+        }
+    }
     
     func loadSavedData() {
         if fetchedResultsController == nil {
             let request = SchedulerItem.createFetchRequest()
             let sort = NSSortDescriptor(key: "weekDay", ascending: true)
-            request.sortDescriptors = [sort]
-            request.fetchBatchSize = 20
-            
+            let sortTime = NSSortDescriptor(key: "startTime", ascending: true)
+            request.sortDescriptors = [sort, sortTime]
+
             fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: container.viewContext, sectionNameKeyPath: "weekDay", cacheName: nil)
             fetchedResultsController.delegate = self
         }
@@ -124,18 +127,31 @@ extension FitnessKitVC  {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionLabel = BaseItemText()
+        let calendarIcon = BaseImage(#imageLiteral(resourceName: "calendar"), frame: CGRect(x: 100, y: 100, width: 50, height: 50))
+        
         sectionLabel.font = .preferredFont(forTextStyle: .title2)
-        
+
         let sectionInfo = fetchedResultsController.sections![section].name
-        sectionLabel.text = WeekDays(rawValue: Int(sectionInfo)!)?.description
-        sectionLabel.textAlignment = .center
         
+        sectionLabel.textColor = #colorLiteral(red: 0.3000817895, green: 0.5665410757, blue: 0.4783787131, alpha: 1)
+        sectionLabel.textAlignment = .center
+        sectionLabel.text = WeekDays(rawValue: Int(sectionInfo)!)?.description
+
         let sectionView = BaseView()
-        let sectionContainerView = BaseView(backgroundColor: #colorLiteral(red: 0.7176470588, green: 0.7176470588, blue: 0.7176470588, alpha: 1), borderWidth: 1)
+        let sectionContainerView = BaseView(backgroundColor: .white, borderWidth: 0)
         sectionContainerView.addSubview(sectionLabel)
+        sectionContainerView.addSubview(calendarIcon)
+        
         NSLayoutConstraint.activate([
             sectionLabel.centerXAnchor.constraint(equalTo: sectionContainerView.centerXAnchor),
             sectionLabel.centerYAnchor.constraint(equalTo: sectionContainerView.centerYAnchor)
+        ])
+ 
+        NSLayoutConstraint.activate([
+            calendarIcon.widthAnchor.constraint(equalToConstant: 25),
+            calendarIcon.heightAnchor.constraint(equalToConstant: 25),
+            calendarIcon.centerYAnchor.constraint(equalTo: sectionContainerView.centerYAnchor),
+            calendarIcon.leadingAnchor.constraint(equalTo: sectionContainerView.leadingAnchor, constant: 24)
         ])
         
         sectionView.addSubview(sectionContainerView)
@@ -151,10 +167,7 @@ extension FitnessKitVC  {
         return sectionView
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return WeekDays(rawValue: section + 1)?.description
-    }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionInfo = fetchedResultsController.sections![section]
         return sectionInfo.numberOfObjects
