@@ -91,6 +91,7 @@
 				7CAADC352409554400907992 /* NetworkingService.swift */,
 				7C43632D240B008300EC7D2A /* ImageService.swift */,
 				7C67162B2407D15900227333 /* FitnessKitVC.swift */,
+				7C43632F240B191000EC7D2A /* SchedulerCell.swift */,
 				7C436319240A836300EC7D2A /* TeacherDetailVC.swift */,
 				7C43631D240AA68A00EC7D2A /* Views.swift */,
 				7C4363172409E80E00EC7D2A /* WeekDays.swift */,
@@ -102,7 +103,6 @@
 				7C6716352407D15B00227333 /* Info.plist */,
 				7C43631B240A877600EC7D2A /* Displayable.swift */,
 				7C43632B240AF6A900EC7D2A /* Workout.swift */,
-				7C43632F240B191000EC7D2A /* SchedulerCell.swift */,
 			);
 			path = FitnessKit;
 			sourceTree = "<group>";

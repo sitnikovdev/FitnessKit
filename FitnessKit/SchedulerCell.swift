@@ -23,7 +23,8 @@ class SchedulerCell: UITableViewCell {
     let teacher = BaseItemText()
     let teacherImage = BaseImage(#imageLiteral(resourceName: "teacher"), frame: CGRect(x: 100, y: 100, width: 45, height: 45))
     let locationImage = BaseImage(#imageLiteral(resourceName: "icn_location") , frame: CGRect(x: 100, y: 150, width: 70, height: 70))
-    
+    let timeDivider = BaseImage(#imageLiteral(resourceName: "icn_time"), frame: CGRect(x: 100, y: 100, width: 100, height: 20))
+    let disclosure = BaseImage(#imageLiteral(resourceName: "icn_disclosure"), frame: CGRect(x: 100, y: 100, width: 50, height: 50))
     
     static let reuseIdentifer = "SchedulerCell"
     var schedulerItem: Displayable! {
@@ -74,11 +75,18 @@ class SchedulerCell: UITableViewCell {
             startTime.leadingAnchor.constraint(equalTo: viewContainer.leadingAnchor, constant: 20)
         ])
         
+        //  time divider
+        viewContainer.addSubview(timeDivider)
+        NSLayoutConstraint.activate([
+            timeDivider.topAnchor.constraint(equalTo: startTime.bottomAnchor, constant: 8),
+            timeDivider.leadingAnchor.constraint(equalTo: viewContainer.leadingAnchor, constant: 20)
+        ])
+        
         // end time
         viewContainer.addSubview(endTime)
         endTime.font = .preferredFont(forTextStyle: .subheadline)
         NSLayoutConstraint.activate([
-            endTime.topAnchor.constraint(equalTo: startTime.lastBaselineAnchor, constant: 16),
+            endTime.topAnchor.constraint(equalTo: startTime.lastBaselineAnchor, constant: 24),
             endTime.leadingAnchor.constraint(equalTo: viewContainer.leadingAnchor, constant: 20)
         ])
         
@@ -138,7 +146,14 @@ class SchedulerCell: UITableViewCell {
             teacher.topAnchor.constraint(equalTo: place.lastBaselineAnchor, constant: 30),
             teacher.leadingAnchor.constraint(equalTo: teacherImage.trailingAnchor, constant: 10)
         ])
+        
+        // disclosure
+        viewContainer.addSubview(disclosure)
+        NSLayoutConstraint.activate([
+            disclosure.centerYAnchor.constraint(equalTo: viewContainer.centerYAnchor),
+            disclosure.trailingAnchor.constraint(equalTo: viewContainer.trailingAnchor, constant: -16)
+        ])
+        
     }
     
-    // MARK: - Handlers
 }
