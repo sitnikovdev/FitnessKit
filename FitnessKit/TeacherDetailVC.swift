@@ -192,7 +192,14 @@ class TeacherDetailVC: UIViewController {
 
         // fit description: Описание занятия
         viewContainer.addSubview(workoutDescriptionLabel)
-        workoutDescriptionLabel.text =  data.workoutDescription.value
+        let attributedString = NSMutableAttributedString(string: data.workoutDescription.value)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 2
+        paragraphStyle.alignment = .left
+        paragraphStyle.firstLineHeadIndent = 20
+        paragraphStyle.lineBreakMode = .byTruncatingTail
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
+        workoutDescriptionLabel.attributedText = attributedString
         workoutDescriptionLabel.numberOfLines = 0
         workoutDescriptionLabel.font = .preferredFont(forTextStyle: .body)
         NSLayoutConstraint.activate([
