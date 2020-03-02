@@ -39,7 +39,11 @@ class SchedulerCell: UITableViewCell {
             let imageUrl =  schedulerItem.trainerImage.value
             
             let url = URL(string: imageUrl)!
-            teacherImage.af.setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "teacher"))
+            if #available(iOS 13.0, *) {
+                teacherImage.af.setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "teacher"))
+            } else {
+                teacherImage.load(url: url)
+            }
 
         }
     }
@@ -156,7 +160,6 @@ class SchedulerCell: UITableViewCell {
             disclosure.centerYAnchor.constraint(equalTo: viewContainer.centerYAnchor),
             disclosure.trailingAnchor.constraint(equalTo: viewContainer.trailingAnchor, constant: -16)
         ])
-        
     }
-    
 }
+
