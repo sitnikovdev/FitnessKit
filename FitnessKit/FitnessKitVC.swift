@@ -66,6 +66,7 @@ class FitnessKitVC: UITableViewController, NSFetchedResultsControllerDelegate {
                 self.loadSavedData()
             case .failure(let error):
                 debugPrint(error.localizedDescription)
+                self.showAlertWithError(error)
             }
         }
     }
@@ -188,6 +189,11 @@ extension FitnessKitVC  {
         let teacherDetailVC = TeacherDetailVC()
         teacherDetailVC.data = selectedItem
         navigationController?.pushViewController(teacherDetailVC, animated: true)
+    }
+    
+    fileprivate func showAlertWithError(_ error: Error) {
+        let alert = UIAlertController.alert(title: "Ресурс не найден", message: "\(error.localizedDescription)")
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

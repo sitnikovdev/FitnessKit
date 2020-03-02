@@ -15,6 +15,7 @@
 		7C43632C240AF6A900EC7D2A /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C43632B240AF6A900EC7D2A /* Workout.swift */; };
 		7C436330240B191000EC7D2A /* SchedulerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C43632F240B191000EC7D2A /* SchedulerCell.swift */; };
 		7C436332240C0BF600EC7D2A /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C436331240C0BF600EC7D2A /* Colors.xcassets */; };
+		7C5D7510240CDB2F0051FFC2 /* UIAlertController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5D750F240CDB2F0051FFC2 /* UIAlertController+.swift */; };
 		7C67162A2407D15900227333 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6716292407D15900227333 /* AppDelegate.swift */; };
 		7C67162C2407D15900227333 /* FitnessKitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C67162B2407D15900227333 /* FitnessKitVC.swift */; };
 		7C67162F2407D15900227333 /* FitnessKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7C67162D2407D15900227333 /* FitnessKit.xcdatamodeld */; };
@@ -36,6 +37,7 @@
 		7C43632B240AF6A900EC7D2A /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		7C43632F240B191000EC7D2A /* SchedulerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerCell.swift; sourceTree = "<group>"; };
 		7C436331240C0BF600EC7D2A /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		7C5D750F240CDB2F0051FFC2 /* UIAlertController+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+.swift"; sourceTree = "<group>"; };
 		7C6716262407D15900227333 /* FitnessKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitnessKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C6716292407D15900227333 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C67162B2407D15900227333 /* FitnessKitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessKitVC.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -95,6 +97,7 @@
 				7C43631D240AA68A00EC7D2A /* Views.swift */,
 				7C4363172409E80E00EC7D2A /* WeekDays.swift */,
 				7CAADC2B24091C4E00907992 /* Bundle+.swift */,
+				7C5D750F240CDB2F0051FFC2 /* UIAlertController+.swift */,
 				7CAADC29240919E600907992 /* fitnesskit.json */,
 				7C67162D2407D15900227333 /* FitnessKit.xcdatamodeld */,
 				7C6716302407D15B00227333 /* Assets.xcassets */,
@@ -242,6 +245,7 @@
 			files = (
 				7CAADC362409554400907992 /* NetworkingService.swift in Sources */,
 				7C43631E240AA68A00EC7D2A /* Views.swift in Sources */,
+				7C5D7510240CDB2F0051FFC2 /* UIAlertController+.swift in Sources */,
 				7C67162C2407D15900227333 /* FitnessKitVC.swift in Sources */,
 				7C436330240B191000EC7D2A /* SchedulerCell.swift in Sources */,
 				7CAADC2C24091C4E00907992 /* Bundle+.swift in Sources */,
