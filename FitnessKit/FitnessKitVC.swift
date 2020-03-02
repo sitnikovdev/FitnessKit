@@ -11,6 +11,7 @@ import CoreData
 
 class FitnessKitVC: UITableViewController, NSFetchedResultsControllerDelegate {
     // MARK: - Properties
+    var vSpinner : UIView?
     let sectionHeaderSize:CGFloat = 30
     let estimatedRowHeight:CGFloat = 150
     var container: NSPersistentContainer!
@@ -26,6 +27,8 @@ class FitnessKitVC: UITableViewController, NSFetchedResultsControllerDelegate {
         title = "Фитнес Кит"
         navigationController?.navigationBar.prefersLargeTitles = true
         configureTableView()
+            
+        self.showSpinner(onView: self.view)
         
         container = NSPersistentContainer(name: "FitnessKit")
         container.loadPersistentStores { storeDescription, error in
@@ -62,11 +65,15 @@ class FitnessKitVC: UITableViewController, NSFetchedResultsControllerDelegate {
             result in
             switch result {
             case .success(_):
+                self.removeSpinner()
                 self.saveContext()
                 self.loadSavedData()
             case .failure(let error):
                 debugPrint(error.localizedDescription)
-                self.showAlertWithError(error)
+                self.showAlertWithError(error) {
+                    self.removeSpinner()
+                    self.loadFromBundle()
+                }
             }
         }
     }
@@ -191,9 +198,55 @@ extension FitnessKitVC  {
         navigationController?.pushViewController(teacherDetailVC, animated: true)
     }
     
-    fileprivate func showAlertWithError(_ error: Error) {
-        let alert = UIAlertController.alert(title: "Ресурс не найден", message: "\(error.localizedDescription)")
+    fileprivate func showAlertWithError(_ error: Error, handler: @escaping () -> Void) {
+        let alert = UIAlertController.alert(title: "Ресурс не найден", message: """
+            
+            \(error.localizedDescription)
+            
+            Будет загружена локальная версия
+            """, handler: handler)
         self.present(alert, animated: true, completion: nil)
     }
 }
 
+extension UIAlertController {
+    static func alert(title: String, message: String, isCancelable: Bool = false, handler:   @escaping ()->Void) -> UIAlertController {
+        let alertController  = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "Ok", style: .default) {
+            _ in
+            handler()
+        }
+        
+        if isCancelable {
+            alertController.addAction(cancelAction)
+        }
+        alertController.addAction(okAction)
+        
+        return alertController
+    }
+}
+extension FitnessKitVC {
+    func showSpinner(onView : UIView) {
+        let spinnerView = UIView.init(frame: onView.bounds)
+        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+        let ai = UIActivityIndicatorView.init(style: .whiteLarge)
+        ai.startAnimating()
+        ai.center = spinnerView.center
+        
+        DispatchQueue.main.async {
+            spinnerView.addSubview(ai)
+            onView.addSubview(spinnerView)
+        }
+        
+        self.vSpinner = spinnerView
+    }
+    
+    func removeSpinner() {
+        DispatchQueue.main.async {
+            self.vSpinner?.removeFromSuperview()
+            self.vSpinner = nil
+        }
+    }
+}
