@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import AlamofireImage
 import CoreData
 
 final class NetworkingService  {
@@ -16,6 +17,7 @@ final class NetworkingService  {
     
     let baseUrl = "https://sample.fitnesskit-admin.ru/schedule/get_group_lessons_v2/1"
     typealias responseAPIResult = Result<[SchedulerItem], AFError>
+    typealias responseAPIImageResult = Result<UIImage, AFError>
 
 
     // MARK: - Init
@@ -26,8 +28,8 @@ final class NetworkingService  {
     
     func getScheduler(context: NSManagedObjectContext, result: @escaping ((responseAPIResult) -> Void))  {
         let decoder = JSONDecoder()
-        decoder.userInfo[CodingUserInfoKey.context!] = context
         decoder.keyDecodingStrategy = .useDefaultKeys
+        decoder.userInfo[CodingUserInfoKey.context!] = context
 
         AF.request(URL(string: baseUrl)!).validate().responseDecodable(of: [SchedulerItem].self, decoder: decoder) { (response) in
             if let error = response.error {
@@ -37,4 +39,5 @@ final class NetworkingService  {
             }
         }
     }
+    
 }

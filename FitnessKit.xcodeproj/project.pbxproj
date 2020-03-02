@@ -13,7 +13,6 @@
 		7C43631C240A877600EC7D2A /* Displayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C43631B240A877600EC7D2A /* Displayable.swift */; };
 		7C43631E240AA68A00EC7D2A /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C43631D240AA68A00EC7D2A /* Views.swift */; };
 		7C43632C240AF6A900EC7D2A /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C43632B240AF6A900EC7D2A /* Workout.swift */; };
-		7C43632E240B008300EC7D2A /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C43632D240B008300EC7D2A /* ImageService.swift */; };
 		7C436330240B191000EC7D2A /* SchedulerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C43632F240B191000EC7D2A /* SchedulerCell.swift */; };
 		7C436332240C0BF600EC7D2A /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C436331240C0BF600EC7D2A /* Colors.xcassets */; };
 		7C67162A2407D15900227333 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6716292407D15900227333 /* AppDelegate.swift */; };
@@ -35,7 +34,6 @@
 		7C43631B240A877600EC7D2A /* Displayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Displayable.swift; sourceTree = "<group>"; };
 		7C43631D240AA68A00EC7D2A /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		7C43632B240AF6A900EC7D2A /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
-		7C43632D240B008300EC7D2A /* ImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		7C43632F240B191000EC7D2A /* SchedulerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerCell.swift; sourceTree = "<group>"; };
 		7C436331240C0BF600EC7D2A /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		7C6716262407D15900227333 /* FitnessKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitnessKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,7 +89,6 @@
 				7CFE2D5E24081C2500DBB07E /* SchedulerItem+CoreDataProperties.swift */,
 				7C6716292407D15900227333 /* AppDelegate.swift */,
 				7CAADC352409554400907992 /* NetworkingService.swift */,
-				7C43632D240B008300EC7D2A /* ImageService.swift */,
 				7C67162B2407D15900227333 /* FitnessKitVC.swift */,
 				7C43632F240B191000EC7D2A /* SchedulerCell.swift */,
 				7C436319240A836300EC7D2A /* TeacherDetailVC.swift */,
@@ -252,7 +249,6 @@
 				7CFE2D6024081C2500DBB07E /* SchedulerItem+CoreDataProperties.swift in Sources */,
 				7C43631A240A836300EC7D2A /* TeacherDetailVC.swift in Sources */,
 				7CFE2D5F24081C2500DBB07E /* SchedulerItem+CoreDataClass.swift in Sources */,
-				7C43632E240B008300EC7D2A /* ImageService.swift in Sources */,
 				7C4363182409E80E00EC7D2A /* WeekDays.swift in Sources */,
 				7C43631C240A877600EC7D2A /* Displayable.swift in Sources */,
 				7C67162A2407D15900227333 /* AppDelegate.swift in Sources */,

@@ -23,6 +23,10 @@ class FitnessKitVC: UITableViewController, NSFetchedResultsControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Фитнес Кит"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        configureTableView()
+        
         container = NSPersistentContainer(name: "FitnessKit")
         container.loadPersistentStores { storeDescription, error in
             self.container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
@@ -32,21 +36,11 @@ class FitnessKitVC: UITableViewController, NSFetchedResultsControllerDelegate {
             }
         }
         
-        title = "Фитнес Кит"
-        navigationController?.navigationBar.prefersLargeTitles = true
-        
-        configureTableView()
-        
         performSelector(inBackground: #selector(fetchScheduler), with: nil)
         loadSavedData()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.navigationBar.prefersLargeTitles = false
-    }
-    
-    
+
     // MARK: - Handlers
     
     func configureTableView() {
@@ -57,9 +51,10 @@ class FitnessKitVC: UITableViewController, NSFetchedResultsControllerDelegate {
         tableView.clipsToBounds = true
         tableView.isOpaque = true
     }
+    // TODO: -Switch to online when available!
     @objc func fetchScheduler() {
         loadFromApi()
-        //        loadFromBundle()
+//        loadFromBundle()
     }
 
     func loadFromApi() {
@@ -127,7 +122,7 @@ extension FitnessKitVC  {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionLabel = BaseItemText()
-        let calendarIcon = BaseImage(#imageLiteral(resourceName: "calendar"), frame: CGRect(x: 100, y: 100, width: 50, height: 50))
+        let calendarIcon = BaseImage(#imageLiteral(resourceName: "calendar"))
         
         sectionLabel.font = .preferredFont(forTextStyle: .title2)
 

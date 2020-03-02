@@ -48,9 +48,9 @@ class BaseItemText: UILabel {
 
 class BaseImage: UIImageView {
 
-    init(_ image: UIImage, frame: CGRect, backgroundColor: UIColor = .white, cornerRadius: CGFloat = 0 ) {
+    init(_ image: UIImage,  backgroundColor: UIColor = .white, cornerRadius: CGFloat = 0 ) {
         super.init(frame: .zero)
-        self.frame = CGRect(x: 100, y: 150, width: 70, height: 70)
+        self.frame = CGRect(x: 100, y: 100, width: 70, height: 70)
         self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = backgroundColor
         layer.cornerRadius = cornerRadius
@@ -71,13 +71,13 @@ class BaseView: UIView {
         super.init(frame: frame)
     }
     
-    init(backgroundColor: UIColor, cornerRadius: CGFloat = 0, borderWidth: CGFloat = 0) {
+    init(backgroundColor: UIColor, borderColor: CGColor = UIColor.black.cgColor, cornerRadius: CGFloat = 0, borderWidth: CGFloat = 0) {
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = backgroundColor
         layer.cornerRadius = cornerRadius
         layer.borderWidth = borderWidth
-//        layer.borderColor = UIColor.black.cgColor
+        layer.borderColor = borderColor
         layer.masksToBounds = true
     }
     

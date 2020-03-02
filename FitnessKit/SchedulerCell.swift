@@ -10,14 +10,7 @@ import UIKit
 class SchedulerCell: UITableViewCell {
     // MARK: - Properties
     
-//    let viewContainer = BaseView(backgroundColor: .white, cornerRadius: 6, borderWidth: 1)
-    
-    lazy var viewContainer: UIView = {
-        let view =  BaseView(backgroundColor: .white, cornerRadius: 6, borderWidth: 0.5)
-        view.layer.borderColor = UIColor.lightGray.cgColor
-        
-        return view
-    }()
+    let viewContainer =  BaseView(backgroundColor: .white, borderColor: UIColor.lightGray.cgColor,  cornerRadius: 6, borderWidth: 0.5)
     let workout = BaseItemText()
     let startTime = BaseItemText()
     let endTime = BaseItemText()
@@ -28,11 +21,10 @@ class SchedulerCell: UITableViewCell {
     }()
     
     let trainerLabel = BaseItemText()
-    let teacherImage = BaseImage(#imageLiteral(resourceName: "teacher"), frame: CGRect(x: 100, y: 100, width: 45, height: 45))
-    let locationImage = BaseImage(#imageLiteral(resourceName: "location") , frame: CGRect(x: 100, y: 150, width: 70, height: 70))
-    let timeDivider = BaseImage(#imageLiteral(resourceName: "icn_time"), frame: CGRect(x: 100, y: 100, width: 100, height: 20))
-    let disclosure = BaseImage(#imageLiteral(resourceName: "icn_disclosure"), frame: CGRect(x: 100, y: 100, width: 50, height: 50))
-    let clockIcon = BaseImage(#imageLiteral(resourceName: "clock"), frame: CGRect(x: 100, y: 100, width: 50, height: 50))
+    let teacherImage = BaseImage(#imageLiteral(resourceName: "teacher"))
+    let locationImage = BaseImage(#imageLiteral(resourceName: "location"))
+    let disclosure = BaseImage(#imageLiteral(resourceName: "icn_disclosure"))
+    let clockIcon = BaseImage(#imageLiteral(resourceName: "clock"))
     
     
     static let reuseIdentifer = "SchedulerCell"
@@ -44,15 +36,11 @@ class SchedulerCell: UITableViewCell {
             trainerLabel.text = schedulerItem.trainerName.value
             startTime.text = schedulerItem.workoutStartTime.value
             endTime.text = schedulerItem.workoutEndTime.value
-            let imageUrl = URL(string: schedulerItem.trainerImage.value)
-            ImageService.shared.getImage(withURL: imageUrl!) { (result) in
-                switch result{
-                case .success(let image):
-                    self.teacherImage.image = image
-                case .failure(let error):
-                    debugPrint(error.localizedDescription)
-                }
-            }
+            let imageUrl =  schedulerItem.trainerImage.value
+            
+            let url = URL(string: imageUrl)!
+            teacherImage.af.setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "teacher"))
+
         }
     }
     
